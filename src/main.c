@@ -4,7 +4,7 @@
 int main()
 {
 	int choix;
-	printf("Choisir un menu entre 1 et 7 : \n");
-	scanf("%d",&choix);
+	printf("Choisir un menu entre 1 et 4 : \n");
+	scanf("%d", &choix);
 	allMenu(choix);
 }

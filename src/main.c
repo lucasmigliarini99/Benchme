@@ -3,16 +3,10 @@
 #include <string.h>
 int main()
 {
-	/* int choix;
-	printf("Choisir un menu entre 1 et 4 : \n");
+	int choix;
+	printf("Choisir un menu: \n1: tri à bulle \n2: tri par sélection\n");
 	scanf("%d", &choix);
 	allMenu(choix);
-	*/
-
-	float tab[] = {1, 4, 9, 2, 8, 6, 10, 7, 2, 3};
-	triBulle(tab);
-	for (int i = 0; i < 10; i++)
-	{
-		printf("%f\n", tab[i]);
-	}
+	
+	
 }

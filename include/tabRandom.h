@@ -1,0 +1,1 @@
+void tabRandom (float *tab, int taille);

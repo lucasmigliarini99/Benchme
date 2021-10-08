@@ -1,0 +1,1 @@
+void triBulle(float *tab, int nbrValeurs);

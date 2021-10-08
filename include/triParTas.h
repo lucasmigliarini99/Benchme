@@ -1,1 +1,1 @@
-void triTas(int arr[], int n);
+void triTas(float *tab, int nbrValeurs);

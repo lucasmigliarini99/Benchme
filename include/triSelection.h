@@ -1,0 +1,1 @@
+void triSelection(float *tab, int nbrValeurs)

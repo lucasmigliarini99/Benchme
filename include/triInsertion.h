@@ -1,0 +1,1 @@
+void triInsertion(float *tab, int nbrValeurs);

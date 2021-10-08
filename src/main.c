@@ -7,19 +7,26 @@
 #include "../include/triSelection.h"
 #include "../include/triInsertion.h"
 #include "../include/triParTas.h"
-#define MAX 10000000
+#include "../include/createCSV.h"
+#define MAX 10000
 
 int main()
 {
-	int taille = rand()%MAX;
-	float *tab = NULL,*tabBull = NULL,*tabSelection=NULL,*tabInsertion=NULL,*tabParTas = NULL;
+	createCSV("export_csv.csv");
+
+	int taille = rand()%MAX; //Taille du tableau
+
+	float *tab = NULL,*tabBull = NULL,*tabSelection=NULL,*tabInsertion=NULL,*tabParTas = NULL; //Initialisation des tableaux
 	tab = malloc(taille * sizeof(float));
 	tabRandom(tab,taille);
+
+	//tailles des tableaux
 	tabBull = malloc(taille * sizeof(float));
 	tabSelection=malloc(taille * sizeof(float));
 	tabInsertion=malloc(taille * sizeof(float));
 	tabParTas=malloc(taille * sizeof(float));
 
+	//Remplissage des tableaux
 	for (int i = 0; i < taille-1; i++)
 	{
 		tabBull[i] = tab[i];
@@ -43,6 +50,7 @@ int main()
     temps_final = clock ();
     temps_cpu = (temps_final - temps_initial)/CLOCKS_PER_SEC;   
     printf("temps CPU : %f\n",temps_cpu);
+	exportCSV("export_csv.csv","triBulle",taille,temps_cpu);
 
 	printf("Tri par selection :\n");
 	temps_initial = clock ();

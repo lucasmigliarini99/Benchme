@@ -3,17 +3,17 @@
 #include <string.h>
 #include <stdbool.h>
 
-void triBulle(float *tab)
+void triBulle(float *tab, int nbrValeurs)
 {
+
     int i;
     int valTemporaire;
     bool changement = true;
-    int nbrValeurs = sizeof(tab);
 
     while (changement == true)
     {
         changement = false;
-        for (i = 0; i <= nbrValeurs; i++)
+        for (i = 0; i < nbrValeurs; i++)
         {
             if (tab[i] > tab[i + 1]) //Si la valeur de i est inferieure à i+1
             {

@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define size 10
-void triSelection(float *tab){
+#include <stdbool.h>
+
+void triSelection(float *tab, int nbrValeurs){
     
     int compteur;
     float tmp;
 
-    for ( int i = 0; i < size; i++)
+    for ( int i = 0; i < nbrValeurs; i++)
     {
         compteur = i;
-        for ( int j = i+1; j < (size-1); j++)
+        for ( int j = i+1; j <= nbrValeurs; j++)
         {
             if(tab[compteur] > tab[j]){
                 compteur = j;

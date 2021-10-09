@@ -1,1 +1,11 @@
-void tabRandom (float *tab, int taille);
+/**
+ * @file tabRandom.h
+ * @author Julien Peyrol, Lucas Migliarini (peyrol.jul@gmail.com, l.migliarini@eleve.leschartreux.net) 
+ * @version 0.1
+ * @date 2021-10-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
+void tabRandom(float *tab, int taille);

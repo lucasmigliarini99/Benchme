@@ -1,3 +1,14 @@
+/**
+ * @file main.c
+ * @author Julien Peyrol, Lucas Migliarini (peyrol.jul@gmail.com, l.migliarini@eleve.leschartreux.net)
+ * @brief fichier qui lance le programme
+ * @version 0.1
+ * @date 2021-10-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,64 +25,60 @@ int main()
 {
 	createCSV("export_csv.csv");
 
-	int taille = rand()%MAX; //Taille du tableau
+	int taille = rand() % MAX; //Taille du tableau
 
-	float *tab = NULL,*tabBull = NULL,*tabSelection=NULL,*tabInsertion=NULL,*tabParTas = NULL; //Initialisation des tableaux
+	float *tab = NULL, *tabBull = NULL, *tabSelection = NULL, *tabInsertion = NULL, *tabParTas = NULL; //Initialisation des tableaux
 	tab = malloc(taille * sizeof(float));
-	tabRandom(tab,taille);
+	tabRandom(tab, taille);
 
 	//tailles des tableaux
 	tabBull = malloc(taille * sizeof(float));
-	tabSelection=malloc(taille * sizeof(float));
-	tabInsertion=malloc(taille * sizeof(float));
-	tabParTas=malloc(taille * sizeof(float));
+	tabSelection = malloc(taille * sizeof(float));
+	tabInsertion = malloc(taille * sizeof(float));
+	tabParTas = malloc(taille * sizeof(float));
 
 	//Remplissage des tableaux
-	for (int i = 0; i < taille-1; i++)
+	for (int i = 0; i < taille - 1; i++)
 	{
 		tabBull[i] = tab[i];
 		tabSelection[i] = tab[i];
 		tabInsertion[i] = tab[i];
 		tabParTas[i] = tab[i];
 	}
-	
-	
 
-    clock_t
-    temps_initial, /* Temps initial en micro-secondes */
-    temps_final; /* Temps final en micro-secondes */
+	clock_t
+		temps_initial, /* Temps initial en micro-secondes */
+		temps_final;   /* Temps final en micro-secondes */
 
-    float
-    temps_cpu; /* Temps total en secondes */
+	float
+		temps_cpu; /* Temps total en secondes */
 
 	printf("Tri par bulle :\n");
-	temps_initial = clock ();
-    triBulle(tabBull,taille);       
-    temps_final = clock ();
-    temps_cpu = (temps_final - temps_initial)/CLOCKS_PER_SEC;   
-    printf("temps CPU : %f\n",temps_cpu);
-	exportCSV("export_csv.csv","triBulle",taille,temps_cpu);
+	temps_initial = clock();
+	triBulle(tabBull, taille);
+	temps_final = clock();
+	temps_cpu = (temps_final - temps_initial) / CLOCKS_PER_SEC;
+	printf("temps CPU : %f\n", temps_cpu);
+	exportCSV("export_csv.csv", "triBulle", taille, temps_cpu);
 
 	printf("Tri par selection :\n");
-	temps_initial = clock ();
-    triSelection(tabInsertion,taille);        
-    temps_final = clock ();
-    temps_cpu = (temps_final - temps_initial)/CLOCKS_PER_SEC;   
-    printf("temps CPU : %f\n",temps_cpu);
+	temps_initial = clock();
+	triSelection(tabInsertion, taille);
+	temps_final = clock();
+	temps_cpu = (temps_final - temps_initial) / CLOCKS_PER_SEC;
+	printf("temps CPU : %f\n", temps_cpu);
 
 	printf("Tri par insertion :\n");
-	temps_initial = clock ();
-    triInsertion(tabSelection,taille);        
-    temps_final = clock ();
-    temps_cpu = (temps_final - temps_initial)/CLOCKS_PER_SEC;   
-    printf("temps CPU : %f\n",temps_cpu);
+	temps_initial = clock();
+	triInsertion(tabSelection, taille);
+	temps_final = clock();
+	temps_cpu = (temps_final - temps_initial) / CLOCKS_PER_SEC;
+	printf("temps CPU : %f\n", temps_cpu);
 
 	printf("Tri par tas :\n");
-	temps_initial = clock ();
-    triTas(tabParTas,taille);        
-    temps_final = clock ();
-    temps_cpu = (temps_final - temps_initial)/CLOCKS_PER_SEC;   
-    printf("temps CPU : %f\n",temps_cpu);
-	
-	
+	temps_initial = clock();
+	triTas(tabParTas, taille);
+	temps_final = clock();
+	temps_cpu = (temps_final - temps_initial) / CLOCKS_PER_SEC;
+	printf("temps CPU : %f\n", temps_cpu);
 }

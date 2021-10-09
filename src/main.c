@@ -20,7 +20,6 @@
 #include "../include/triInsertion.h"
 #include "../include/triParTas.h"
 #include "../include/createCSV.h"
-#define MAX 10000
 
 int main()
 {

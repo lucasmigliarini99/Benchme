@@ -69,3 +69,4 @@ void triTas(float *tab, int nbrValeurs)
         echange(&tab[0], &tab[i]);
         entassement(tab, i, 0);
     }
+}

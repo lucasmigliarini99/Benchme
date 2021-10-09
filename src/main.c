@@ -12,7 +12,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
+#include <sys/time.h>
+#include <unistd.h>
 #include "../include/tabRandom.h"
 #include "../include/triBulle.h"
 #include "../include/triSelection.h"
@@ -25,60 +26,98 @@ int main()
 {
 	createCSV("export_csv.csv");
 
-	int taille = rand() % MAX; //Taille du tableau
-
+	int tailleTab[6] = {100,1000,10000,100000,1000000,10000000};
 	float *tab = NULL, *tabBull = NULL, *tabSelection = NULL, *tabInsertion = NULL, *tabParTas = NULL; //Initialisation des tableaux
-	tab = malloc(taille * sizeof(float));
-	tabRandom(tab, taille);
-
-	//tailles des tableaux
-	tabBull = malloc(taille * sizeof(float));
-	tabSelection = malloc(taille * sizeof(float));
-	tabInsertion = malloc(taille * sizeof(float));
-	tabParTas = malloc(taille * sizeof(float));
-
-	//Remplissage des tableaux
-	for (int i = 0; i < taille - 1; i++)
-	{
-		tabBull[i] = tab[i];
-		tabSelection[i] = tab[i];
-		tabInsertion[i] = tab[i];
-		tabParTas[i] = tab[i];
-	}
-
-	clock_t
+	struct timeval
 		temps_initial, /* Temps initial en micro-secondes */
 		temps_final;   /* Temps final en micro-secondes */
 
-	float
-		temps_cpu; /* Temps total en secondes */
+	float temps_exe; /* Temps total en secondes */
 
-	printf("Tri par bulle :\n");
-	temps_initial = clock();
-	triBulle(tabBull, taille);
-	temps_final = clock();
-	temps_cpu = (temps_final - temps_initial) / CLOCKS_PER_SEC;
-	printf("temps CPU : %f\n", temps_cpu);
-	exportCSV("export_csv.csv", "triBulle", taille, temps_cpu);
+	//Valeur moyennes
+	float tpsTriBulle, tpstriSelection,tpstriInsertion, tpstriTas;
 
-	printf("Tri par selection :\n");
-	temps_initial = clock();
-	triSelection(tabInsertion, taille);
-	temps_final = clock();
-	temps_cpu = (temps_final - temps_initial) / CLOCKS_PER_SEC;
-	printf("temps CPU : %f\n", temps_cpu);
+	for (int i = 0; i < 5; i++)
+	{
+		
+	
+		tab = malloc(tailleTab[i] * sizeof(float));	
 
-	printf("Tri par insertion :\n");
-	temps_initial = clock();
-	triInsertion(tabSelection, taille);
-	temps_final = clock();
-	temps_cpu = (temps_final - temps_initial) / CLOCKS_PER_SEC;
-	printf("temps CPU : %f\n", temps_cpu);
+		//tailles des tableaux
+		tabBull = malloc(tailleTab[i] * sizeof(float));
+		tabSelection = malloc(tailleTab[i] * sizeof(float));
+		tabInsertion = malloc(tailleTab[i] * sizeof(float));
+		tabParTas = malloc(tailleTab[i] * sizeof(float));
 
-	printf("Tri par tas :\n");
-	temps_initial = clock();
-	triTas(tabParTas, taille);
-	temps_final = clock();
-	temps_cpu = (temps_final - temps_initial) / CLOCKS_PER_SEC;
-	printf("temps CPU : %f\n", temps_cpu);
+		//remise à 0
+		tpsTriBulle = 0, tpstriSelection = 0,tpstriInsertion = 0, tpstriTas = 0;
+
+		for (int j = 0; j < 2; j++)
+		{
+
+			//Remplissage du tableau avec des nombres aléatoires entre 0 et 10^6
+			tabRandom(tab, tailleTab[i]);
+
+			//Remplissage des tableaux
+			for (int k = 0; k < tailleTab[i] - 1; k++)
+			{
+				tabBull[k] = tab[k];
+				tabSelection[k] = tab[k];
+				tabInsertion[k] = tab[k];
+				tabParTas[k] = tab[k];
+			}
+
+			
+
+			printf("Tri par bulle :\n");
+			gettimeofday(&temps_initial,NULL);
+
+			triBulle(tabBull, tailleTab[i]);
+			
+			gettimeofday(&temps_final,NULL);
+			
+			temps_exe = (temps_final.tv_sec - temps_initial.tv_sec);
+			tpsTriBulle += temps_exe;
+			printf("temps CPU : %f\n", temps_exe);
+			
+
+			printf("Tri par selection :\n");
+			gettimeofday(&temps_initial,NULL);
+			triSelection(tabInsertion, tailleTab[i]);
+			gettimeofday(&temps_final,NULL);
+			temps_exe = (temps_final.tv_sec - temps_initial.tv_sec);
+			tpstriSelection += temps_exe;
+			printf("temps CPU : %f\n", temps_exe);
+
+			printf("Tri par insertion :\n");
+			gettimeofday(&temps_initial,NULL);
+			triInsertion(tabSelection, tailleTab[i]);
+			gettimeofday(&temps_final,NULL);
+			temps_exe = (temps_final.tv_sec - temps_initial.tv_sec);
+			tpstriInsertion += temps_exe;
+			printf("temps CPU : %f\n", temps_exe);
+
+			printf("Tri par tas :\n");
+			gettimeofday(&temps_initial,NULL);
+			triTas(tabParTas, tailleTab[i]);
+			gettimeofday(&temps_final,NULL);
+			temps_exe = (temps_final.tv_sec - temps_initial.tv_sec);
+			tpstriTas += temps_exe;
+			printf("temps CPU : %f\n", temps_exe);
+		}
+
+
+		tpsTriBulle = tpsTriBulle/3;
+		exportCSV("export_csv.csv", "triBulle", tailleTab[i], tpsTriBulle);
+
+		tpstriSelection = tpstriSelection/3;
+		exportCSV("export_csv.csv", "triSelection", tailleTab[i], tpstriSelection);
+
+		tpstriInsertion = tpstriInsertion/3;
+		exportCSV("export_csv.csv", "triInsertion", tailleTab[i], tpstriInsertion);
+
+		tpstriTas = tpstriTas/3;
+		exportCSV("export_csv.csv", "triTas", tailleTab[i], tpstriTas);
+		
+	}
 }

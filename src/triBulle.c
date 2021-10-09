@@ -1,7 +1,25 @@
+/**
+ * @file triBulle.c
+ * @author Julien Peyrol, Lucas Migliarini (peyrol.jul@gmail.com, l.migliarini@eleve.leschartreux.net)
+ * @brief fonction de tri à bulle
+ * @version 0.1
+ * @date 2021-10-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+
+/**
+ * @brief tri un tableau en utilisant la méthode de tri à bulle
+ * 
+ * @param tab -> tableau à trier
+ * @param nbrValeurs -> taille du tableau
+ */
 
 void triBulle(float *tab, int nbrValeurs)
 {

@@ -1,4 +1,22 @@
+/**
+ * @file triParTas.c
+ * @author Julien Peyrol, Lucas Migliarini (peyrol.jul@gmail.com, l.migliarini@eleve.leschartreux.net)
+ * @brief fonction de tri par tas
+ * @version 0.1
+ * @date 2021-10-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include <stdio.h>
+
+/**
+ * @brief permutation de deux variables d'un tableau
+ * 
+ * @param a -> premiere valeur du tableau
+ * @param b -> deuxième valeur du tableau
+ */
 
 void echange(int *a, int *b)
 {
@@ -6,6 +24,14 @@ void echange(int *a, int *b)
     *a = *b;
     *b = tmp;
 }
+
+/**
+ * @brief tri un tableau en utilisant la méthode de tri par tas
+ * 
+ * @param tab -> tableau à trier 
+ * @param nbrValeurs -> nombre de valeurs à trier
+ * @param i 
+ */
 
 void entassement(float *tab, int nbrValeurs, int i)
 {
@@ -22,6 +48,13 @@ void entassement(float *tab, int nbrValeurs, int i)
         entassement(tab, nbrValeurs, max);
     }
 }
+
+/**
+ * @brief tri un tableau en utilisant la méthode de tri par tas
+ * 
+ * @param tab -> tableau à trier
+ * @param nbrValeurs -> taille du tableau
+ */
 
 void triTas(float *tab, int nbrValeurs)
 {

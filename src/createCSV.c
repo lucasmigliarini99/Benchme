@@ -1,7 +1,7 @@
 /**
  * @file createCSV.c
  * @author Julien Peyrol, Lucas Migliarini (peyrol.jul@gmail.com, l.migliarini@eleve.leschartreux.net)
- * @brief 
+ * @brief Crée le fichier csv et l'exporte
  * @version 0.1
  * @date 2021-10-09
  * 

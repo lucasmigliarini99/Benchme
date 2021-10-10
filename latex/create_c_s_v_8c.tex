@@ -1,0 +1,71 @@
+\hypertarget{create_c_s_v_8c}{}\doxysection{src/create\+CSV.c File Reference}
+\label{create_c_s_v_8c}\index{src/createCSV.c@{src/createCSV.c}}
+
+
+Crée le fichier csv et l\textquotesingle{}exporte.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{create_c_s_v_8c_a45fb427048ab86e2626ab02db4d66522}{create\+CSV}} (char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em crée un fichier csv \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{create_c_s_v_8c_a2dba2abc1f22ac5166b71abef17379ce}{export\+CSV}} (char $\ast$filename, char $\ast$name, int size, float average)
+\begin{DoxyCompactList}\small\item\em exporte le fichier csv \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Crée le fichier csv et l\textquotesingle{}exporte. 
+
+\begin{DoxyAuthor}{Author}
+Julien Peyrol, Lucas Migliarini (\href{mailto:peyrol.jul@gmail.com}{\texttt{ peyrol.\+jul@gmail.\+com}}, \href{mailto:l.migliarini@eleve.leschartreux.net}{\texttt{ l.\+migliarini@eleve.\+leschartreux.\+net}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/10-\/09
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2021 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{create_c_s_v_8c_a45fb427048ab86e2626ab02db4d66522}\label{create_c_s_v_8c_a45fb427048ab86e2626ab02db4d66522}} 
+\index{createCSV.c@{createCSV.c}!createCSV@{createCSV}}
+\index{createCSV@{createCSV}!createCSV.c@{createCSV.c}}
+\doxysubsubsection{\texorpdfstring{createCSV()}{createCSV()}}
+{\footnotesize\ttfamily void create\+CSV (\begin{DoxyParamCaption}\item[{char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+crée un fichier csv 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/$>$ nom du fichier crée \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{create_c_s_v_8c_a2dba2abc1f22ac5166b71abef17379ce}\label{create_c_s_v_8c_a2dba2abc1f22ac5166b71abef17379ce}} 
+\index{createCSV.c@{createCSV.c}!exportCSV@{exportCSV}}
+\index{exportCSV@{exportCSV}!createCSV.c@{createCSV.c}}
+\doxysubsubsection{\texorpdfstring{exportCSV()}{exportCSV()}}
+{\footnotesize\ttfamily void export\+CSV (\begin{DoxyParamCaption}\item[{char $\ast$}]{filename,  }\item[{char $\ast$}]{name,  }\item[{int}]{size,  }\item[{float}]{average }\end{DoxyParamCaption})}
+
+
+
+exporte le fichier csv 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/$>$ nom du fichier \\
+\hline
+{\em name} & -\/$>$ nom du tri \\
+\hline
+{\em size} & -\/$>$ taille du tableau \\
+\hline
+{\em average} & -\/$>$ moyenne du temps pris \\
+\hline
+\end{DoxyParams}

@@ -13,4 +13,4 @@ make documentation
 ```
 ## Résultat attendus 
 
-Un fichier csv sera crée après le lancement. Il aura trois colomnes: la première sera l'algorithme utilisé, la seconde sera la taille du tableau et la troisième le temps moyen pris pour trier le tableau. 
+Un fichier csv sera crée après le lancement. Il y aura trois colonnes: la première sera l'algorithme utilisé, la seconde sera la taille du tableau et la troisième le temps moyen pris pour trier le tableau. 
